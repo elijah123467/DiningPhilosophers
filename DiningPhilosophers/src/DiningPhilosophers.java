@@ -21,6 +21,8 @@ public class DiningPhilosophers {
 
 	public void DiningPhilosopherRun(int inI) {
 
+		i = inI;
+		
 		while (true) {
 			think();
 			take_forks(inI);
