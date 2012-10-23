@@ -1,9 +1,9 @@
 import java.util.Random;
 
 public class DiningPhilosophers {
-
+	String name;
 	int i;
-	int N = 5;
+	int N = 6;
 	int LEFT = (i + N - 1) % N;
 	int RIGHT = (i + 1) % N;
 	int THINKING = 0;
@@ -16,13 +16,13 @@ public class DiningPhilosophers {
 	int[] semaphore = new int[N];
 
 	public DiningPhilosophers() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public void DiningPhilosopherRun(int inI) {
+	public void DiningPhilosopherRun(int inI,String Name) {
 
 		i = inI;
-		
+		name = Name;
 		while (true) {
 			think();
 			take_forks(inI);
@@ -59,7 +59,7 @@ public class DiningPhilosophers {
 
 	private void think() {
 		Random thinkRand = new Random();
-		System.out.println("Thinking:" + i);
+		System.out.println("Philosopher "+i+" "+name+" is thinking.");
 		try {
 			Thread.sleep(thinkRand.nextInt(4000));
 		} catch (InterruptedException e) {
@@ -70,7 +70,7 @@ public class DiningPhilosophers {
 
 	private void eat() {
 		Random eatRand = new Random();
-		System.out.println("Eating:" + i);
+		System.out.println("Philosopher "+i+" "+name+" is eating.");
 		try {
 			Thread.sleep(eatRand.nextInt(4000));
 		} catch (InterruptedException e) {

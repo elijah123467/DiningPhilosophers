@@ -12,7 +12,7 @@ public class Aristotle implements Runnable {
 				// Check to see if another thread is eating cookies.
 
 				DiningPhilosophers philoAction = new DiningPhilosophers();
-				philoAction.DiningPhilosopherRun(0);
+				philoAction.DiningPhilosopherRun(5,"Aristotle");
 
 				Thread.sleep(4000);
 
@@ -24,6 +24,6 @@ public class Aristotle implements Runnable {
 			e.printStackTrace();
 		}
 		// When done eating cookies display how many eaten.
-		System.out.println("\nI am Eli. I ate " + " cookies");
+		System.out.println("");
 	}
 }
