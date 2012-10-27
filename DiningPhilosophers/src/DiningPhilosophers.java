@@ -21,32 +21,46 @@ public class DiningPhilosophers {
 
 	public void DiningPhilosopherRun(int inI) {
 
+		for (int j = 0; j < semaphore.length; j++) {
+			System.out.println("Semaphore:" + semaphore[j]);
+		}
+
 		i = inI;
-		
+
 		while (true) {
 			think();
 			take_forks(inI);
-			eat();
+			eat(i);
 			put_forks(inI);
 		}
 	}
 
 	private void take_forks(int inI) {
-
+		
 		down(mutex);
 		state[inI] = HUNGRY;
 		test(inI);
 		up(mutex);
 		down(semaphore[inI]);
+		
+		for (int j = 0; j < semaphore.length; j++) {
+			System.out.println("Semaphore:" + semaphore[j] + " State"
+					+ state[j]);
+		}
 	}
 
 	private void put_forks(int inI) {
-
+		
 		down(mutex);
 		state[inI] = THINKING;
 		test(LEFT);
 		test(RIGHT);
 		up(mutex);
+		
+		for (int j = 0; j < semaphore.length; j++) {
+			System.out.println("Semaphore:" + semaphore[j] + " State"
+					+ state[j]);
+		}
 	}
 
 	private void test(int inI) {
@@ -68,7 +82,7 @@ public class DiningPhilosophers {
 		}
 	}
 
-	private void eat() {
+	private void eat(int inI) {
 		Random eatRand = new Random();
 		System.out.println("Eating:" + i);
 		try {
@@ -80,8 +94,16 @@ public class DiningPhilosophers {
 	}
 
 	private void down(int mutex) {
+		for (int j = 0; j < semaphore.length; j++) {
+			System.out.println("Semaphore:" + semaphore[j] + " State"
+					+ state[j]);
+		}
 	}
 
 	private void up(int mutex) {
+		for (int j = 0; j < semaphore.length; j++) {
+			System.out.println("Semaphore:" + semaphore[j] + " State"
+					+ state[j]);
+		}
 	}
 }

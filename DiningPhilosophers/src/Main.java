@@ -21,10 +21,15 @@ public class Main {
 
 		// Start threads
 		thread1.start();
-		thread2.start();
-		thread3.start();
-		thread4.start();
-		thread5.start();
+		System.out.println("fuck off man1");
+		//thread2.start();
+		System.out.println("fuck off man2");
+		//thread3.start();
+		System.out.println("fuck off man3");
+		//thread4.start();
+		System.out.println("fuck off man4");
+		//thread5.start();
+		System.out.println("fuck off man5");
 	}
 
 }

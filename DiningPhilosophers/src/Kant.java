@@ -1,6 +1,6 @@
 public class Kant implements Runnable {
 	// Variable to store the amount of cookies eaten.
-	int philosopher = 0;
+	int philosopher = 3;
 	String name = "";
 
 	boolean dining = true;
@@ -13,7 +13,7 @@ public class Kant implements Runnable {
 				// Check to see if another thread is eating cookies.
 
 				DiningPhilosophers philoAction = new DiningPhilosophers();
-				philoAction.DiningPhilosopherRun(2);
+				philoAction.DiningPhilosopherRun(philosopher);
 				Thread.sleep(4000);
 
 				// System.out.println( cookie );

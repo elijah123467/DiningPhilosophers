@@ -12,7 +12,7 @@ public class Socrates implements Runnable {
 				// Check to see if another thread is eating cookies.
 
 				DiningPhilosophers philoAction = new DiningPhilosophers();
-				philoAction.DiningPhilosopherRun(1);
+				philoAction.DiningPhilosopherRun(philosopher);
 
 				Thread.sleep(4000);
 
