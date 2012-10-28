@@ -10,6 +10,7 @@ public class Aristotle implements Runnable {
 		methodPhilosopher = philoAction;
 	}
 
+	// Variable to store philosopher.
 	int philosopher = 1;
 
 	boolean dining = true;

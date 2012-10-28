@@ -59,7 +59,7 @@ public class DiningPhilosophers {
 	public void put_forks(int inI) {
 
 		i = inI;
-		
+
 		down(mutex);
 		state[inI] = THINKING;
 
@@ -75,7 +75,7 @@ public class DiningPhilosophers {
 	private void test(int inI) {
 
 		i = inI;
-		
+
 		if (state[inI] == HUNGRY && state[LEFT] != EATING
 				&& state[RIGHT] != EATING) {
 			state[inI] = EATING;
@@ -102,26 +102,32 @@ public class DiningPhilosophers {
 	public void eat(int inI) {
 
 		Random eatRand = new Random();
-		System.out.println("Philosopher " + inI + " " +  nameArray[inI] + " is eating.");
+
+		System.out.println("Philosopher " + inI + " " + nameArray[inI]
+				+ " is eating.");
+
+		countArray[inI] += 1;
 
 		try {
 			Thread.sleep(eatRand.nextInt(40));
-			System.out
-					.println("Philosopher " + inI + " " + nameArray[inI]
-							+ " is done eating." + " Has ate this many times: "
-							+ countArray[inI]);
+			for (int i = 0; i < nameArray.length; i++) {
+				System.out.println("Philosopher " + inI + " is done eating. " + " But " + nameArray[i]
+						+ " Has ate this many times: "
+						+ countArray[i]);
+			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		semaphore[inI] = 0;
-		countArray[inI] = count++;
+
 	}
 
 	private void down(int inMutex) {
 
 		// Handles the semaphores critical region.
-		if (inMutex == 10 && semaphore[i] == 0 && blockedArray[i] == true) {
+		if ((inMutex == 10 && semaphore[i] == 0 && blockedArray[i] == false)
+				|| (blockedArray[i] == true)) {
 
 			mutex = 20;
 
@@ -132,7 +138,7 @@ public class DiningPhilosophers {
 			}
 
 			blocked = true;
-
+			System.out.println(nameArray[i] + " is blocked " + blocked);
 		}
 
 		if (inMutex < 5) {

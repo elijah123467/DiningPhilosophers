@@ -9,7 +9,8 @@ public class Kant implements Runnable {
 	public Kant(DiningPhilosophers philoAction) {
 		methodPhilosopher = philoAction;
 	}
-
+	
+	// Variable to store philosopher.
 	int philosopher = 3;
 
 	boolean dining = true;

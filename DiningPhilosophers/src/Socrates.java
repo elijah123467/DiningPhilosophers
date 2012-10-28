@@ -1,9 +1,6 @@
 public class Socrates implements Runnable {
 	// Variable to store method for multiple runs.
 	DiningPhilosophers methodPhilosopher = null;
-	int philosopher = 0;
-
-	boolean dining = true;
 
 	public Socrates() {
 
@@ -12,6 +9,11 @@ public class Socrates implements Runnable {
 	public Socrates(DiningPhilosophers philoAction) {
 		methodPhilosopher = philoAction;
 	}
+
+	// Variable to store philosopher.
+	int philosopher = 0;
+
+	boolean dining = true;
 
 	public void run() {
 
