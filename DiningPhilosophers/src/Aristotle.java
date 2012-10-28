@@ -6,27 +6,19 @@ public class Aristotle implements Runnable {
 
 	public void run() {
 		try {
-			// Decides to eat cookies until there is no more.
-			//while (dining) {
 
-				// Check to see if another thread is eating cookies.
+			// Run method to eat, think.
 
-				DiningPhilosophers philoAction = new DiningPhilosophers();
+			DiningPhilosophers philoAction = new DiningPhilosophers();
 
-				//philoAction.DiningPhilosopherRun(philosopher);
+			philoAction.DiningPhilosopherRun(philosopher, "Aristotle");
 
-				philoAction.DiningPhilosopherRun(philosopher,"Aristotle");
+			Thread.sleep(1);
 
-				Thread.sleep(4000);
-
-				// System.out.println( cookie );
-
-			//}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// When done eating cookies display how many eaten.
-		System.out.println("");
+
 	}
 }

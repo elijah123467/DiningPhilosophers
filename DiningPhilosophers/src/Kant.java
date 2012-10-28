@@ -7,27 +7,17 @@ public class Kant implements Runnable {
 
 	public void run() {
 		try {
-			// Decides to eat cookies until there is no more.
-			while (dining) {
+			// Run method to eat, think.
 
-				// Check to see if another thread is eating cookies.
+			DiningPhilosophers philoAction = new DiningPhilosophers();
 
-				DiningPhilosophers philoAction = new DiningPhilosophers();
+			philoAction.DiningPhilosopherRun(philosopher, "Kant");
 
-				//philoAction.DiningPhilosopherRun(philosopher);
+			Thread.sleep(1);
 
-				philoAction.DiningPhilosopherRun(philosopher,"Kant");
-
-				Thread.sleep(4000);
-
-				// System.out.println( cookie );
-
-			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// When done eating cookies display how many eaten.
-		System.out.println("");
 	}
 }
