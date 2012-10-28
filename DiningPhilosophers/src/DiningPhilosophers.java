@@ -15,6 +15,7 @@ public class DiningPhilosophers {
 	int[] semaphore = new int[N];
 	int[] state = new int[N];
 	String[] nameArray = new String[N];
+	int[] countArray = new int[N];
 
 	boolean[] blockedArray = new boolean[N];
 	boolean blocked = false;
@@ -89,7 +90,7 @@ public class DiningPhilosophers {
 				+ " is thinking.");
 
 		try {
-			Thread.sleep(thinkRand.nextInt(40));
+			Thread.sleep(thinkRand.nextInt(400));
 			System.out.println("Philosopher " + i + " " + nameArray[i]
 					+ " is Hungry.");
 		} catch (InterruptedException e) {
@@ -108,13 +109,13 @@ public class DiningPhilosophers {
 			System.out
 					.println("Philosopher " + inI + " " + nameArray[inI]
 							+ " is done eating." + " Has ate this many times: "
-							+ count);
+							+ countArray[inI]);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		semaphore[i] = 0;
-		count++;
+		semaphore[inI] = 0;
+		countArray[inI] = count++;
 	}
 
 	private void down(int inMutex) {

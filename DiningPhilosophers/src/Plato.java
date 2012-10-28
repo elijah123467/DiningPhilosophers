@@ -16,6 +16,7 @@ public class Plato implements Runnable {
 	boolean dining = true;
 
 	public void run() {
+		
 		// Run method to eat, think.
 		methodPhilosopher.DiningPhilosopherRun(philosopher, "Plato");
 		while (true) {

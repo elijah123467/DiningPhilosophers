@@ -12,10 +12,11 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Create tasks
-
+		
+		// Create Table for eating.
 		DiningPhilosophers philoAction = new DiningPhilosophers();
 		
+		// Create tasks
 		Runnable aristotle = new Aristotle(philoAction);
 		Runnable socrates = new Socrates(philoAction);
 		Runnable kant = new Kant(philoAction);
