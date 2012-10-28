@@ -1,23 +1,29 @@
 public class Marx implements Runnable {
+	// Variable to store method for multiple runs.
+	DiningPhilosophers methodPhilosopher = null;
+
+	public Marx() {
+
+	}
+
+	public Marx(DiningPhilosophers philoAction) {
+		methodPhilosopher = philoAction;
+	}
+
 	// Variable to store Philosopher.
 	int philosopher = 2;
 
 	boolean dining = true;
 
 	public void run() {
-		try {
 
-			// Run method to eat, think.
-
-			DiningPhilosophers philoAction = new DiningPhilosophers();
-
-			philoAction.DiningPhilosopherRun(philosopher, "Marx");
-
-			Thread.sleep(1);
-
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Run method to eat, think.
+		methodPhilosopher.DiningPhilosopherRun(philosopher, "Marx");
+		while (true) {
+			methodPhilosopher.think();
+			methodPhilosopher.take_forks(philosopher);
+			methodPhilosopher.eat(philosopher);
+			methodPhilosopher.put_forks(philosopher);
 		}
 	}
 }

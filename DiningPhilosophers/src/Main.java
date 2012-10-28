@@ -14,11 +14,13 @@ public class Main {
 	public static void main(String[] args) {
 		// Create tasks
 
-		Runnable aristotle = new Aristotle();
-		Runnable socrates = new Socrates();
-		Runnable kant = new Kant();
-		Runnable marx = new Marx();
-		Runnable plato = new Plato();
+		DiningPhilosophers philoAction = new DiningPhilosophers();
+		
+		Runnable aristotle = new Aristotle(philoAction);
+		Runnable socrates = new Socrates(philoAction);
+		Runnable kant = new Kant(philoAction);
+		Runnable marx = new Marx(philoAction);
+		Runnable plato = new Plato(philoAction);
 
 		// Create threads
 		Thread thread1 = new Thread(aristotle);
