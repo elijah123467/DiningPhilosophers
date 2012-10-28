@@ -3,30 +3,33 @@ import java.util.Random;
 public class DiningPhilosophers {
 	String name;
 	int i;
-	int N = 6;
+	int count;
+	int N = 5;
 	int LEFT = (i + N - 1) % N;
 	int RIGHT = (i + 1) % N;
 	int THINKING = 0;
 	int HUNGRY = 1;
 	int EATING = 2;
-	// typedef int semaphore;
-	int[] state = new int[N];
-	/* semaphore */int mutex = 1;
-	/* semaphore s[N]; */
+
+	int mutex = 0;
 	int[] semaphore = new int[N];
+	int[] state = new int[N];
 
 	public DiningPhilosophers() {
-		
+
 	}
 
-	public void DiningPhilosopherRun(int inI,String Name) {
+	public void DiningPhilosopherRun(int inI, String Name) {
 
 		i = inI;
 		name = Name;
+
+		System.out.println("Philosopher:" + name);
+
 		while (true) {
 			think();
 			take_forks(inI);
-			eat();
+			eat(i);
 			put_forks(inI);
 		}
 	}
@@ -35,18 +38,29 @@ public class DiningPhilosophers {
 
 		down(mutex);
 		state[inI] = HUNGRY;
+
+		System.out.println("Semaphore:" + name + " " + semaphore[inI] + " Hungry "
+				+ state[inI]);
+
 		test(inI);
+
 		up(mutex);
 		down(semaphore[inI]);
+
 	}
 
 	private void put_forks(int inI) {
 
 		down(mutex);
 		state[inI] = THINKING;
+
+		System.out.println("Semaphore: " + name + " " + semaphore[inI]
+				+ " Thinking " + state[inI]);
+
 		test(LEFT);
 		test(RIGHT);
 		up(mutex);
+
 	}
 
 	private void test(int inI) {
@@ -59,29 +73,40 @@ public class DiningPhilosophers {
 
 	private void think() {
 		Random thinkRand = new Random();
-		System.out.println("Philosopher "+i+" "+name+" is thinking.");
+		System.out.println("Philosopher " + i + " " + name + " is thinking.");
 		try {
-			Thread.sleep(thinkRand.nextInt(4000));
+			Thread.sleep(thinkRand.nextInt(40));
+			System.out.println("Philosopher " + i + " " + name + " is Hungry.");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void eat() {
+	private void eat(int inI) {
+		
 		Random eatRand = new Random();
-		System.out.println("Philosopher "+i+" "+name+" is eating.");
+		System.out.println("Philosopher " + i + " " + name + " is eating.");
 		try {
-			Thread.sleep(eatRand.nextInt(4000));
+			Thread.sleep(eatRand.nextInt(40));
+			System.out.println("Philosopher " + i + " " + name
+					+ " is done eating." + " Has ate this many times: " + count);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		count ++;
 	}
 
 	private void down(int mutex) {
+		// Handles the semaphores critical region.
+		semaphore[i] = 0;
+
 	}
 
 	private void up(int mutex) {
+		// Handles the semaphores critical region.
+		semaphore[i] = mutex;
+
 	}
 }
