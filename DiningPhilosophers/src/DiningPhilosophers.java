@@ -10,8 +10,8 @@ public class DiningPhilosophers {
 	int THINKING = 0;
 	int HUNGRY = 1;
 	int EATING = 2;
-
 	int mutex = 10;
+	
 	int[] semaphore = new int[N];
 	int[] state = new int[N];
 	String[] nameArray = new String[N];
@@ -37,9 +37,10 @@ public class DiningPhilosophers {
 
 		i = inI;
 
-		down(mutex);
-
-		if (blocked == true) {
+		if (blocked == false) {
+			
+			down(mutex);
+			
 			state[inI] = HUNGRY;
 
 			System.out.println("Semaphore:" + nameArray[inI] + " "
@@ -51,6 +52,7 @@ public class DiningPhilosophers {
 		}
 
 		if (blocked = true) {
+			
 			down(semaphore[inI]);
 		}
 
@@ -146,6 +148,8 @@ public class DiningPhilosophers {
 				blockedArray[i] = false;
 			}
 			blockedArray[i] = true;
+			down(mutex);
+			System.out.println(nameArray[i] + " is no longer blocked ");
 		}
 	}
 
