@@ -22,7 +22,7 @@ public class Main {
 		// Start threads
 		thread1.start();
 		System.out.println("fuck off man1");
-		//thread2.start();
+		thread2.start();
 		System.out.println("fuck off man2");
 		//thread3.start();
 		System.out.println("fuck off man3");

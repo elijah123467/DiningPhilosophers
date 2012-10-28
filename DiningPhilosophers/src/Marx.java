@@ -13,11 +13,10 @@ public class Marx implements Runnable {
 				// Check to see if another thread is eating cookies.
 
 				DiningPhilosophers philoAction = new DiningPhilosophers();
-<<<<<<< HEAD
-				philoAction.DiningPhilosopherRun(philosopher);
-=======
+
+				//philoAction.DiningPhilosopherRun(philosopher);
+
 				philoAction.DiningPhilosopherRun(3,"Marx");
->>>>>>> origin/master
 
 				Thread.sleep(4000);
 

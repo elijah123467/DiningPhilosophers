@@ -3,7 +3,7 @@ import java.util.Random;
 public class DiningPhilosophers {
 	String name;
 	int i;
-	int N = 6;
+	int N = 5;
 	int LEFT = (i + N - 1) % N;
 	int RIGHT = (i + 1) % N;
 	int THINKING = 0;
@@ -16,21 +16,19 @@ public class DiningPhilosophers {
 	int[] semaphore = new int[N];
 
 	public DiningPhilosophers() {
-		
+
 	}
 
-	public void DiningPhilosopherRun(int inI,String Name) {
+	public void DiningPhilosopherRun(int inI, String Name) {
 
 		for (int j = 0; j < semaphore.length; j++) {
 			System.out.println("Semaphore:" + semaphore[j]);
 		}
 
 		i = inI;
-<<<<<<< HEAD
 
-=======
 		name = Name;
->>>>>>> origin/master
+
 		while (true) {
 			think();
 			take_forks(inI);
@@ -40,31 +38,31 @@ public class DiningPhilosophers {
 	}
 
 	private void take_forks(int inI) {
-		
+
 		down(mutex);
 		state[inI] = HUNGRY;
+		System.out.println("Semaphore:" + semaphore[inI] + " State"
+				+ state[inI]);
 		test(inI);
 		up(mutex);
 		down(semaphore[inI]);
-		
-		for (int j = 0; j < semaphore.length; j++) {
-			System.out.println("Semaphore:" + semaphore[j] + " State"
-					+ state[j]);
-		}
+
+		System.out.println("Semaphore:" + semaphore[inI] + " State"
+				+ state[inI]);
+
 	}
 
 	private void put_forks(int inI) {
-		
+
 		down(mutex);
 		state[inI] = THINKING;
 		test(LEFT);
 		test(RIGHT);
 		up(mutex);
-		
-		for (int j = 0; j < semaphore.length; j++) {
-			System.out.println("Semaphore:" + semaphore[j] + " State"
-					+ state[j]);
-		}
+
+		System.out.println("Semaphore:" + semaphore[inI] + " State"
+				+ state[inI]);
+
 	}
 
 	private void test(int inI) {
@@ -77,7 +75,7 @@ public class DiningPhilosophers {
 
 	private void think() {
 		Random thinkRand = new Random();
-		System.out.println("Philosopher "+i+" "+name+" is thinking.");
+		System.out.println("Philosopher " + i + " " + name + " is thinking.");
 		try {
 			Thread.sleep(thinkRand.nextInt(4000));
 		} catch (InterruptedException e) {
@@ -88,7 +86,7 @@ public class DiningPhilosophers {
 
 	private void eat(int inI) {
 		Random eatRand = new Random();
-		System.out.println("Philosopher "+i+" "+name+" is eating.");
+		System.out.println("Philosopher " + i + " " + name + " is eating.");
 		try {
 			Thread.sleep(eatRand.nextInt(4000));
 		} catch (InterruptedException e) {
@@ -98,16 +96,16 @@ public class DiningPhilosophers {
 	}
 
 	private void down(int mutex) {
-		for (int j = 0; j < semaphore.length; j++) {
-			System.out.println("Semaphore:" + semaphore[j] + " State"
-					+ state[j]);
-		}
+		semaphore[i] = mutex;
+
+		System.out.println("Semaphore:" + semaphore[i] + " State" + state[i]);
+
 	}
 
 	private void up(int mutex) {
-		for (int j = 0; j < semaphore.length; j++) {
-			System.out.println("Semaphore:" + semaphore[j] + " State"
-					+ state[j]);
-		}
+		semaphore[i] = 0;
+
+		System.out.println("Semaphore:" + semaphore[i] + " State" + state[i]);
+
 	}
 }

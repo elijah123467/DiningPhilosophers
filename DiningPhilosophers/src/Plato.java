@@ -12,11 +12,11 @@ public class Plato implements Runnable {
 				// Check to see if another thread is eating cookies.
 
 				DiningPhilosophers philoAction = new DiningPhilosophers();
-<<<<<<< HEAD
-				philoAction.DiningPhilosopherRun(philosopher);
-=======
+
+				//philoAction.DiningPhilosopherRun(philosopher);
+
 				philoAction.DiningPhilosopherRun(4,"Plato");
->>>>>>> origin/master
+
 
 				Thread.sleep(4000);
 

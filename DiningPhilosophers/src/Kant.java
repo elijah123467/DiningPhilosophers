@@ -13,11 +13,11 @@ public class Kant implements Runnable {
 				// Check to see if another thread is eating cookies.
 
 				DiningPhilosophers philoAction = new DiningPhilosophers();
-<<<<<<< HEAD
-				philoAction.DiningPhilosopherRun(philosopher);
-=======
-				philoAction.DiningPhilosopherRun(2,"Kant");
->>>>>>> origin/master
+
+				//philoAction.DiningPhilosopherRun(philosopher);
+
+				philoAction.DiningPhilosopherRun(philosopher,"Kant");
+
 				Thread.sleep(4000);
 
 				// System.out.println( cookie );
