@@ -1,7 +1,6 @@
 public class Kant implements Runnable {
 	// Variable to store the amount of cookies eaten.
 	int philosopher = 3;
-	String name = "";
 
 	boolean dining = true;
 

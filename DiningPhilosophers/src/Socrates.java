@@ -10,7 +10,7 @@ public class Socrates implements Runnable {
 			// Run method to eat, think.
 			DiningPhilosophers philoAction = new DiningPhilosophers();
 
-			philoAction.DiningPhilosopherRun(1, "Socrates");
+			philoAction.DiningPhilosopherRun(philosopher, "Socrates");
 
 			Thread.sleep(1);
 

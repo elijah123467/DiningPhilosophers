@@ -1,7 +1,6 @@
 public class Marx implements Runnable {
 	// Variable to store Philosopher.
 	int philosopher = 2;
-	String name = "";
 
 	boolean dining = true;
 
